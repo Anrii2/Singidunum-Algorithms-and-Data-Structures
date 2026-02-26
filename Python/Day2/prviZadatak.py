@@ -15,6 +15,10 @@ procedure bubbleSort(arr : lisa elemenata):
     end for
 end procedure
 """
+import time
+import random
+
+
 def bubble_sort(arr):
     n = len(arr)
     for i in range(n):
@@ -27,8 +31,19 @@ def bubble_sort(arr):
             break
     return arr
 
+def measure(arr, repeats=1000):
+    total_time = 0.0
+    for _ in range(repeats):
+        arr_copy = arr.copy()
+        start_time = time.perf_counter()
+        bubble_sort(arr_copy)
+        end_time = time.perf_counter()
+        total_time += end_time - start_time
+    return total_time / repeats
 
-nasa_lista = [64, 34, 25, 12, 22, 11, 90, 1432, 12983, 2131, 123123, 666523, 124674, 12983618723, 1298371, 218937, 1092, 1287365, 12387912, 5555, 123452134]
+nasa_lista = [random.randint(0, 1_000_000) for _ in range(1000)]
 print("Nesortirana lista:", nasa_lista)
+prosecno_vreme = measure(nasa_lista, repeats=1000)
+print(f"Prosecno vreme izvrsavanja: {prosecno_vreme:.15f} sekundi")
 bubble_sort(nasa_lista)
 print("Sortirana lista:", nasa_lista)

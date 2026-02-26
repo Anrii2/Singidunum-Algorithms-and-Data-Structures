@@ -44,6 +44,6 @@ def measure(arr, repeats=1000):
 nasa_lista = [random.randint(0, 1_000_000) for _ in range(1000)]
 print("Nesortirana lista:", nasa_lista)
 prosecno_vreme = measure(nasa_lista, repeats=1000)
-print(f"Prosecno vreme izvrsavanja: {prosecno_vreme:.15f} sekundi")
+print(f"Prosecno vreme izvrsavanja BubbleSorta: {prosecno_vreme:.15f} sekundi")
 bubble_sort(nasa_lista)
 print("Sortirana lista:", nasa_lista)

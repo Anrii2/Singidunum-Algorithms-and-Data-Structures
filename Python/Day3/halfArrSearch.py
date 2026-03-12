@@ -1,38 +1,43 @@
 """
-Given an array of integers, return the index of the first occurrence of a target value. If the target is not found, return -1.
-Every time you search for a target value, you can only access the middle element of the current search range. 
-If the middle element is equal to the target, return its index. If the middle element is less than the target, 
-continue searching in the right half of the array. 
-If the middle element is greater than the target, continue searching in the left half of the array.
+Binarna pretraga - za dati niz celih brojeva, vratiti indeks trazenog broja.
+Ukoliko broj nije pronadjen, vratiti -1.
 
-Time Complexity: O(log n)
+Vremenska kompleksnost: O(log n)
 
 Pseudocode:
-procedure halfArrSearch(arr : list of integers, target : integer):
-    left = 0
-    right = length(arr) - 1
-    while left <= right:
-        mid = left + (right - left) // 2
-        if arr[mid] == target:
-            return mid
-        else if arr[mid] < target:
-            left = mid + 1
+procedure binarnaPretraga(lista : lista celih brojeva, trazeniBroj : ceo broj):
+    start = 0
+    end = duzina(lista) - 1
+    srednjiIndeks = 0
+
+    while start <= end:
+        srednjiIndeks = (start + end) // 2
+        if lista[srednjiIndeks] < trazeniBroj:
+            # broj koji trazimo je u desnoj polovini
+            granica za start = srednjiIndeks + 1
+        else if lista[srednjiIndeks] > trazeniBroj:
+            # broj koji trazimo je u levoj polovini
+            granica za end = srednjiIndeks - 1
         else:
-            right = mid - 1
+            pronasli smo broj na srednjiIndeks
+            return srednjiIndeks
     end while
     return -1
 end procedure
 
 """
-def halfArrSearch(arr, target):
-    left, right = 0, len(arr) - 1
-    while left <= right:
-        mid = left + (right - left) // 2
-        if arr[mid] == target:
-            return mid
-        elif arr[mid] < target:
-            left = mid + 1
+def binarnaPretraga(lista, trazeniBroj):
+    start = 0
+    end = len(lista) - 1
+    srednjiIndeks = 0
+
+    while start <= end:
+        srednjiIndeks = (start + end) // 2
+        if lista[srednjiIndeks] < trazeniBroj:
+            start = srednjiIndeks + 1
+        elif lista[srednjiIndeks] > trazeniBroj:
+            end = srednjiIndeks - 1
         else:
-            right = mid - 1
+            return srednjiIndeks
     return -1
 
